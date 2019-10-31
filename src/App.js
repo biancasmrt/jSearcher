@@ -1,13 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import logo from './logo.svg';
-import pic from './images/logo.png'
+import pic from './images/logo.png';
+import Refine from './components/Refine.js';
+import Display from './components/Display.js';
 import './App.css';
 
 
 function App() {
   return (
     <div className="App">
+      <Refine/>
       <header className="App-header">
         <h1>
           jSearcher   
@@ -23,7 +26,7 @@ function App() {
         <br/>
         </div>
         <div class="option">
-          Level of Difficulty
+          Level of Difficulty&nbsp;
           <select id="diffVal">
             <option value="0">All</option>
             <option value="200">200</option>
@@ -42,13 +45,15 @@ function App() {
       </div>
     </body>
     <script type="application/javascript">
-    var e = document.getElementById("diffVal");
-    var diffValue = e.options[e.selectedIndex].value;
+      var e = document.getElementById("diffVal");
+      var diffValue = e.options[e.selectedIndex].value;
   </script>
 
 
     </div>
   );
+
 }
+
 export default App;
 
