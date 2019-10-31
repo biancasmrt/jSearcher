@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import axios from 'axios';
 import logo from './logo.svg';
 import pic from './images/logo.png';
@@ -6,10 +7,15 @@ import Refine from './components/Refine.js';
 import Display from './components/Display.js';
 import './App.css';
 
+=======
+import Header from './Header';
+import Refine from './Refine';
+>>>>>>> a367a92c2a54c868236523b4d5f6ac0183154921
 
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
       <Refine/>
       <header className="App-header">
         <h1>
@@ -50,6 +56,14 @@ function App() {
   </script>
 
 
+=======
+      <Header />
+      <Refine />
+      <script type="application/javascript">
+        var e = document.getElementById("diffVal");
+        var diffValue = e.options[e.selectedIndex].value;
+      </script>
+>>>>>>> a367a92c2a54c868236523b4d5f6ac0183154921
     </div>
   );
 
