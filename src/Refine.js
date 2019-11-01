@@ -9,6 +9,8 @@ export default class Refine extends Component {
       super(props);
       this.state = {question: '',
                     answer: '',
+                    category:'',
+                    date:'',
                     levelOption: 'Select a level of difficulty to see this update.'};
 
       Request.get(url)
@@ -49,28 +51,14 @@ export default class Refine extends Component {
       return (
         <div className="Refine">
           <h1>Refine</h1>
-          <p>
-            You should be able to use the code for the examples below to make your app function like you want.
-            The level option example binds the user input to the state. The random question example updates your 
-            state with a new random question every five seconds. Basically use the levelOption state to query jservice
-            and repeat for your other options.
-          </p>
-          <p>
-            Good luck! I don't mind answering questions at all, so feel free.
-          </p>
           <h5>Level Option Example:</h5>
           <p>{ this.state.levelOption }</p>
 
-          <h5>Random Question Example:</h5>
-          <p>{ this.state.question }</p>
-
-          <h5>Answer to Random Question:</h5>
-          <p>{ this.state.answer }</p>
-
-          <div className="option">
+          <div className="option" onChange={this.handleChange}>
             <label for="when">Date:&nbsp; </label>
             <input id="when" name="when" type="date" min="1964-01-01" max="2019-12-01"/>
           </div>
+          <br/>
           <div className="option" onChange={this.handleChange}>
             Level of Difficulty
             <select id="diffVal">
