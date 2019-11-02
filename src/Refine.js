@@ -5,14 +5,56 @@ import categories from './categories.js';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import Display from './Display.js';
-
+import { FixedSizeList } from 'react-window';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
  import { MuiPickersUtilsProvider, InlineDatePicker , KeyboardDatePicker,} from "@material-ui/pickers";
  import DateFnsUtils from "@date-io/date-fns";
 
 import { SSL_OP_CIPHER_SERVER_PREFERENCE } from 'constants';
  import { createFilterOptions } from '@material-ui/lab/Autocomplete';
 
+ function renderRow(props) {
+  const { data, index, style } = props;
 
+  return React.cloneElement(data[index], {
+    style: {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      display: 'block',
+      ...style,
+    },
+  });
+}
+
+const ListboxComponent = React.forwardRef(function ListboxComponent(props, ref) {
+  const { children, ...other } = props;
+  // const smUp = useMediaQuery(theme => theme.breakpoints.up('sm'));
+  const itemCount = Array.isArray(children) ? children.length : 0;
+  const itemSize = 36;
+
+  const outerElementType = React.useMemo(() => {
+    return React.forwardRef((props2, ref2) => <div ref={ref2} {...props2} {...other} />);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <div ref={ref}>
+      <FixedSizeList
+        style={{ padding: 0, height: Math.min(8, itemCount) * itemSize, maxHeight: 'auto' }}
+        itemData={children}
+        height={250}
+        width="100%"
+        outerElementType={outerElementType}
+        innerElementType="ul"
+        itemSize={itemSize}
+        overscanCount={5}
+        itemCount={itemCount}
+      >
+        {renderRow}
+      </FixedSizeList>
+    </div>
+  );
+});
 
 export default class Refine extends Component {
     constructor(props) {
@@ -136,7 +178,7 @@ export default class Refine extends Component {
           </div>
           <br/>
           <Autocomplete onChange={this.handleCategory}
-            loadingText = "Loading Categories"
+            ListboxComponent={ListboxComponent}
             options={categories}
             getOptionLabel={x => x.title}
             renderInput={params => (
