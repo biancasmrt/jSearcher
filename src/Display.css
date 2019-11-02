@@ -1,7 +1,13 @@
 .Display {
-    flex-direction: right;
-    padding-right: 30px;
     font-family: "Courier New", Courier, monospace;
     font-size: 15px;
-    padding-left: 10%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.showAnswer {
+    display: flex;
+    flex-direction: right;
+    align-content:right;
 }
