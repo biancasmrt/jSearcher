@@ -9,6 +9,7 @@ import { FixedSizeList } from 'react-window';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
  import { MuiPickersUtilsProvider, InlineDatePicker , KeyboardDatePicker,} from "@material-ui/pickers";
  import DateFnsUtils from "@date-io/date-fns";
+ import { useTheme } from '@material-ui/core/styles';
 
 import { SSL_OP_CIPHER_SERVER_PREFERENCE } from 'constants';
  import { createFilterOptions } from '@material-ui/lab/Autocomplete';
@@ -29,9 +30,10 @@ import { SSL_OP_CIPHER_SERVER_PREFERENCE } from 'constants';
 
 const ListboxComponent = React.forwardRef(function ListboxComponent(props, ref) {
   const { children, ...other } = props;
-  // const smUp = useMediaQuery(theme => theme.breakpoints.up('sm'));
+  const theme = useTheme();
+  const smUp = useMediaQuery(theme.breakpoints.up('sm'));
   const itemCount = Array.isArray(children) ? children.length : 0;
-  const itemSize = 36;
+  const itemSize = smUp ? 36 : 48;
 
   const outerElementType = React.useMemo(() => {
     return React.forwardRef((props2, ref2) => <div ref={ref2} {...props2} {...other} />);
@@ -138,13 +140,9 @@ export default class Refine extends Component {
       return (
         
         <div className="Refine">
-          {/* <Button variant="contained" color="primary">
-            Hello World
-          </Button> */}
 
           <h1>Refine</h1>
-          {/* <h5>Level Option Example:</h5>
-          <p>{ this.state.levelOption }</p> */}
+
           <div className="option" onChange={this.handleStartDate}>
             <label for="when">Start date:&nbsp; </label>
             <input id="when" name="when" type="date" min="1964-01-01" max="2019-12-01"/>
@@ -164,7 +162,6 @@ export default class Refine extends Component {
             <label for="when">End date:&nbsp; </label>
             <input id="when" name="when" type="date" min="1964-01-01" max="2019-12-01"/>
           </div>
-          <br/>
           <div className="option" onChange={this.handleDifficulty}>
             Level of Difficulty&nbsp;
             <select id="diffVal">
@@ -178,6 +175,7 @@ export default class Refine extends Component {
           </div>
           <br/>
           <Autocomplete onChange={this.handleCategory}
+            disableListWrap
             ListboxComponent={ListboxComponent}
             options={categories}
             getOptionLabel={x => x.title}

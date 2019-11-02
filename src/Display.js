@@ -11,7 +11,8 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
-    marginBottom: 10
+    marginBottom: 10,
+    marginTop: 20
   },
   bullet: {
     display: 'inline-block',
@@ -22,7 +23,7 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 20,
+    marginBottom: 12,
   },
 });
 
