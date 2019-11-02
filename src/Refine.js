@@ -1,69 +1,33 @@
 import React, { Component } from 'react';
 import './Refine.css';
 import Request from "superagent";
-
+import categories from './categories.js';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
- import Display from './Display.js';
+import Display from './Display.js';
 
  import { MuiPickersUtilsProvider, InlineDatePicker , KeyboardDatePicker,} from "@material-ui/pickers";
  import DateFnsUtils from "@date-io/date-fns";
 
-const top100Films = [
-  {
-    "id": 11510,
-    "title": "pair of dice, lost",
-    "clues_count": 5
-    },
-    {
-    "id": 11531,
-    "title": "mixed bag",
-    "clues_count": 5
-    },
-    {
-    "id": 11532,
-    "title": "let's \"ch\"at",
-    "clues_count": 5
-    },
-    {
-    "id": 5412,
-    "title": "prehistoric times",
-    "clues_count": 10
-    },
-    {
-    "id": 11496,
-    "title": "acting families",
-    "clues_count": 5
-    },
-];
+import { SSL_OP_CIPHER_SERVER_PREFERENCE } from 'constants';
+ import { createFilterOptions } from '@material-ui/lab/Autocomplete';
+
+
 
 export default class Refine extends Component {
     constructor(props) {
-      
       super(props);
-      this.state = {question: '',
-                    questions: [],
-                    answer: '',
+      this.state = {questions: [],
                     category:'',
                     startDate:'',
                     endDate:'',
-                    difficulty: ''};
+                    difficulty: '',
+                    shouldOpenList: false};
       
       this.handleDifficulty = this.handleDifficulty.bind(this);
       this.handleStartDate = this.handleStartDate.bind(this);
       this.handleEndDate = this.handleEndDate.bind(this);
       this.handleCategory = this.handleCategory.bind(this);
-      // setInterval(() => {
-      //   Request.get(url)
-      //       .then((response) => {
-      //           console.log(response)
-      //           console.log(response.body[0])
-      //           this.setState({
-      //               question: response.body[0].question,
-      //               answer: response.body[0].answer,
-      //           });
-      //       });
-      // }, 5000);
     }
 
     makeRequest() {
@@ -76,18 +40,13 @@ export default class Refine extends Component {
             .then((response) => {
                 console.log(response.body)
                 try{
-                    var html = response.body[0].question;
-                    var div = document.createElement("div");
-                    div.innerHTML = html;
-                    var questionText = div.textContent || div.innerText || "";
-
                   this.setState({
-                    question: questionText,
-                    answer: response.body[0].answer,
-                    questions:response.body
+                    questions: response.body
                   });
                 } catch {
-
+                  this.setState({
+                    questions: []
+                  })
                 }
                 
             });
@@ -119,12 +78,18 @@ export default class Refine extends Component {
 
     handleCategory(event,value) {
       try {
-        console.log(value.id);
-        this.setState({category: value.id}, this.makeRequest);
+        if (value.title.length > 3) {
+          console.log(value);
+          this.setState({category: value.id,
+                        shouldOpenList: true}, this.makeRequest);
+        } else {
+          this.setState({category: '',
+                        shouldOpenList: false}, this.makeRequest);
+        }
       } catch {
-
+        this.setState({category: '',
+                      shouldOpenList: false}, this.makeRequest);
       }
-      
     }
   
     render() {
@@ -171,18 +136,29 @@ export default class Refine extends Component {
           </div>
           <br/>
           <Autocomplete onChange={this.handleCategory}
-            options={top100Films}
+            loadingText = "Loading Categories"
+            options={categories}
             getOptionLabel={x => x.title}
-            style={{ width: 300 }}
             renderInput={params => (
-              <TextField {...params} label="Combo box" variant="outlined" fullWidth />
+              <TextField {...params} label="Categories" variant="outlined" fullWidth />
             )}
           /> 
 
         {
           this.state.questions.map((value, index) => {
             console.log(value)
-            return <Display key={index} question={value.question} answer={value.answer} category={value.category.title} difficulty={value.value} date={value.airdate}/>
+            
+            var html = value.answer;
+            var div = document.createElement("div");
+            div.innerHTML = html;
+            var answerText = div.textContent || div.innerText || "";
+
+            html = value.question;
+            div.innerHTML = html;
+            var questionText = div.textContent || div.innerText || "";
+            
+
+            return <Display key={index} question={questionText} answer={answerText} category={value.category.title} difficulty={value.value} date={value.airdate.slice(0,10)}/>
           })
         }
         </div>
