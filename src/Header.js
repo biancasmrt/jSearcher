@@ -10,9 +10,12 @@ export default class Header extends Component {
         <h1 className="logo">
             jSearcher
         </h1> 
+        <div className="scroll">
         <ReactTypingEffect
           text="What's your question?" 
         />
+        </div>
+        
         </div>
       </div>
     )

@@ -2,8 +2,6 @@
     text-align: center;
     background: #8bc0ef;
     min-height: 0vh;
-    /* align-items: center;
-    justify-content: flex-start; */
     display: flex;
     flex-direction: column;
     align-content:flex-start;
@@ -14,6 +12,7 @@
     color: white;
 } 
 
-.all{
-    
+.scroll{
+    color: white;
+    padding-bottom: 10px;
 }
