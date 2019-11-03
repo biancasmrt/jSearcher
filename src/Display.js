@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   card: {
+    width: "100vh",
     maxWidth: 600,
     marginBottom: 10,
     marginTop: 20
@@ -37,25 +38,25 @@ export default function Display(props) {
             Aired {props.date}
             <br/>Q:&nbsp;
         </Typography>
-        <Typography variant="subtitle1" component="h2" display="inline">
+        <Typography variant="body2" component="h2" display="inline">
             {props.question}<br/>
         </Typography>
         <Typography className={classes.title} color="textSecondary" display="inline" gutterBottom>
           A:&nbsp;
         </Typography>
-        <Typography variant="body1" component="h2" display="inline">
+        <Typography variant="body2" component="h2" display="inline">
             {props.answer}<br/>
         </Typography>
         <Typography className={classes.title} color="textSecondary" display="inline" gutterBottom>
           Category: &nbsp;
         </Typography>
-        <Typography variant="body1" component="h2" display="inline">
+        <Typography variant="body2" component="h2" display="inline">
             {props.category}<br/>
         </Typography>
         <Typography className={classes.title} color="textSecondary" display="inline" gutterBottom>
           Level &nbsp;
         </Typography>
-        <Typography variant="body1" component="h2" display="inline">
+        <Typography variant="body2" component="h2" display="inline">
             {props.difficulty}
         </Typography>
         

@@ -4,7 +4,6 @@
     min-height: 0vh;
     display: flex;
     flex-direction: column;
-    align-content:flex-start;
     
 }
 .logo{
