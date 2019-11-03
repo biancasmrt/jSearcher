@@ -2,8 +2,8 @@
     text-align: center;
     background: #8bc0ef;
     display: flex;
-    /* flex-direction: column; */
-    align-items: flex-start; 
+    flex-direction: column;
+    align-items: column; 
     
     justify-content: center;
 }

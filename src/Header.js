@@ -11,13 +11,13 @@ export default class Header extends Component {
           <h1 className="logo">
               jSearcher
           </h1>
+          <br/>
           <div className="scroll">
             {/* hi */}
-            {/* <ReactTypingEffect
+            <ReactTypingEffect
               text="What's your question?" 
-            /> */}
+            /> 
           </div>
-          {/* <img src={logo} alt="golf"/> */}
         </div>
       </div>
     )
