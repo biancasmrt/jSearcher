@@ -12,7 +12,7 @@ export default class Header extends Component {
               jSearcher
           </h1>
           <div className="scroll">
-            hi
+            {/* hi */}
             {/* <ReactTypingEffect
               text="What's your question?" 
             /> */}
