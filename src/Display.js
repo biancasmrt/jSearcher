@@ -5,12 +5,11 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275,
+    maxWidth: 600,
     marginBottom: 10,
     marginTop: 20
   },
@@ -29,40 +28,39 @@ const useStyles = makeStyles({
 
 export default function Display(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
+    <Grid className="all">
     <Card className={classes.card}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-            {props.date}
+        <Typography className={classes.title} color="textSecondary" display="inline" gutterBottom>
+            Aired {props.date}
+            <br/>Q:&nbsp;
         </Typography>
-        <Typography variant="subtitle1" component="h2">
-            
-            Q: {props.question}
+        <Typography variant="subtitle1" component="h2" display="inline">
+            {props.question}<br/>
         </Typography>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Answer
+        <Typography className={classes.title} color="textSecondary" display="inline" gutterBottom>
+          A:&nbsp;
         </Typography>
-        <Typography variant="body1" component="h2">
-            {props.answer}
+        <Typography variant="body1" component="h2" display="inline">
+            {props.answer}<br/>
         </Typography>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Category
+        <Typography className={classes.title} color="textSecondary" display="inline" gutterBottom>
+          Category: &nbsp;
         </Typography>
-        <Typography variant="body1" component="h2">
-            {props.category}
+        <Typography variant="body1" component="h2" display="inline">
+            {props.category}<br/>
         </Typography>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Level 
+        <Typography className={classes.title} color="textSecondary" display="inline" gutterBottom>
+          Level &nbsp;
         </Typography>
-        <Typography variant="body1" component="h2">
+        <Typography variant="body1" component="h2" display="inline">
             {props.difficulty}
         </Typography>
         
-    <Grid/>
       </CardContent>
-    
     </Card>
+    </Grid>
   );
 }

@@ -11,10 +11,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Container maxWidth='md'>
+      <Container>
         <Refine />
       </Container>
-      
     </div>
   );
 

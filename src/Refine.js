@@ -10,6 +10,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
  import { MuiPickersUtilsProvider, InlineDatePicker , KeyboardDatePicker,} from "@material-ui/pickers";
  import DateFnsUtils from "@date-io/date-fns";
  import { useTheme } from '@material-ui/core/styles';
+ import Grid from '@material-ui/core/Grid';
 
 import { SSL_OP_CIPHER_SERVER_PREFERENCE } from 'constants';
  import { createFilterOptions } from '@material-ui/lab/Autocomplete';
@@ -140,50 +141,48 @@ export default class Refine extends Component {
       return (
         
         <div className="Refine">
-
+ <Grid container className='refineOps' spacing={1} direction='column' >
           <h1>Refine</h1>
-
-          <div className="option" onChange={this.handleStartDate}>
-            <label for="when">Start date:&nbsp; </label>
-            <input id="when" name="when" type="date" min="1964-01-01" max="2019-12-01"/>
-          </div>
-
-          {/* <KeyboardDatePicker
-            margin="normal"
-            id="date-picker-dialog"
-            label="Date picker dialog"
-            format="MM/dd/yyyy"
-            KeyboardButtonProps={{
-              'aria-label': 'change date',
-            }}
-        /> */}
-
-          <div className="option" onChange={this.handleEndDate}>
-            <label for="when">End date:&nbsp; </label>
-            <input id="when" name="when" type="date" min="1964-01-01" max="2019-12-01"/>
-          </div>
-          <div className="option" onChange={this.handleDifficulty}>
-            Level of Difficulty&nbsp;
-            <select id="diffVal">
-              <option value="">All</option>
-              <option value="200">200</option>
-              <option value="400">400</option>
-              <option value="600">600</option>
-              <option value="800">800</option>
-              <option value="1000">1000</option>
-            </select>
-          </div>
+         
+            <Grid item>
+              <div className="option" onChange={this.handleStartDate}>
+                <label for="when">Start date:&nbsp; </label>
+                <input id="when" name="when" type="date" min="1964-01-01" max="2019-12-01"/>
+              </div>
+            </Grid>
+            <Grid item>
+              <div className="option" onChange={this.handleEndDate}>
+                <label for="when">End date:&nbsp;&nbsp;&nbsp; </label>
+                <input id="when" name="when" type="date" min="1964-01-01" max="2019-12-01"/>
+              </div>
+             </Grid>
+             <Grid item>
+              <div className="option" onChange={this.handleDifficulty}>
+                Difficulty:&nbsp;
+                <select id="diffVal">
+                  <option value="">All</option>
+                  <option value="200">200</option>
+                  <option value="400">400</option>
+                  <option value="600">600</option>
+                  <option value="800">800</option>
+                  <option value="1000">1000</option>
+                </select>
+              </div>
+            </Grid>
           <br/>
+          <Grid item >
           <Autocomplete onChange={this.handleCategory}
+            style={{ width: 264 }}
             disableListWrap
             ListboxComponent={ListboxComponent}
             options={categories}
             getOptionLabel={x => x.title}
             renderInput={params => (
-              <TextField {...params} label="Categories" variant="outlined" fullWidth />
+              <TextField {...params} label="Select Category" variant="outlined" fullWidth />
             )}
           /> 
-
+        </Grid>
+    </Grid>
         {
           this.state.questions.map((value, index) => {
             console.log(value)
@@ -197,10 +196,11 @@ export default class Refine extends Component {
             div.innerHTML = html;
             var questionText = div.textContent || div.innerText || "";
             
-
-            return <Display key={index} question={questionText} answer={answerText} category={value.category.title} difficulty={value.value} date={value.airdate.slice(0,10)}/>
+              return <Display key={index} question={questionText} answer={answerText} category={value.category.title} difficulty={value.value} date={value.airdate.slice(0,10)}/>
+           
           })
         }
+        
         </div>
       );
     }

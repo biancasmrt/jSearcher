@@ -1,11 +1,12 @@
 .Refine {
     /* display: flex; */
-    flex-direction: row;
+    float: left;
     font-family: "Courier New", Courier, monospace;
     font-size: 20px;
+    padding-left: 10%;
 }
 
 .option {
-    flex-direction: row;
-    padding-top: 43px;
+    display: flex;
+    padding-top: 1%;
 }

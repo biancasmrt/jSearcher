@@ -1,11 +1,19 @@
 .Header {
     text-align: center;
     background: #8bc0ef;
-    min-height: 18vh;
+    min-height: 0vh;
+    /* align-items: center;
+    justify-content: flex-start; */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(15px + 2vmin);
+    align-content:flex-start;
+    
+}
+.logo{
+    font-size: calc(35px + 2vmin);
     color: white;
+} 
+
+.all{
+    
 }

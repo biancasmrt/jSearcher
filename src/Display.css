@@ -1,13 +1,15 @@
 .Display {
     font-family: "Courier New", Courier, monospace;
     font-size: 15px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+    float: right;
+   /* display: flex;
+    align-content: right;
+    flex-direction: right;
+    justify-content: right; */
 }
 
-.showAnswer {
+/* .showAnswer {
     display: flex;
     flex-direction: right;
     align-content:right;
-}
+} */
