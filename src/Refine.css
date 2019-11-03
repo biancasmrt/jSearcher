@@ -1,0 +1,12 @@
+.Refine {
+    float: left;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 20px;
+    padding-left: 11%;
+    padding-right: 5%;
+}
+
+.option {
+    display: flex;
+    padding-top: 1%;
+}
