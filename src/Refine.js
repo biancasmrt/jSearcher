@@ -141,7 +141,9 @@ export default class Refine extends Component {
       return (
         
         <div className="Refine">
- <Grid container className='refineOps' spacing={1} direction='column' >
+  <Grid container className='refineAll' direction='row' spacing={7}> 
+    <Grid item>
+    <Grid container className='refineOps' spacing={1} direction='column' >
           <h1>Refine</h1>
          
             <Grid item>
@@ -183,6 +185,8 @@ export default class Refine extends Component {
           /> 
         </Grid>
     </Grid>
+    </Grid>
+    <Grid item>
         {
           this.state.questions.map((value, index) => {
             console.log(value)
@@ -200,8 +204,10 @@ export default class Refine extends Component {
            
           })
         }
-        
-        </div>
+        </Grid>
+        </Grid>
+      </div>
+
       );
     }
 }
