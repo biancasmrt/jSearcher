@@ -10,16 +10,13 @@
 
 .scroll{
     font-family: 'Courier New', Courier, monospace;
-    color: white;
+    color:purple;
     padding-bottom: 10px;
 }
 
 .stuff {
     padding-top: 2%;
     align-content: flex-start;
-    /*flex-wrap: wrap; 
-    display: inline-flex;
-    align-items: column;  */
     justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: column;
