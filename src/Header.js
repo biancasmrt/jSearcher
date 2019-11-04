@@ -8,15 +8,16 @@ export default class Header extends Component {
     return (
       <div className="all">
         <div className="Header">
-          <h1 className="logo">
-              jSearcher
-          </h1>
-          <br/>
-          <div className="scroll">
-            {/* hi */}
-            <ReactTypingEffect
-              text="What's your question?" 
-            /> 
+            <div className="stuff">
+            <h1 className="logo">
+                jSearcher
+            </h1>
+            
+            <div className="scroll">
+              <ReactTypingEffect
+                text="What's your question?" 
+              /> 
+            </div>
           </div>
         </div>
       </div>
