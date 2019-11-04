@@ -1,4 +1,4 @@
-##Capital One Summit For Software Engineers Challenge
+Capital One Summit For Software Engineers Challenge
 
 Challenge Description: build a web application that:
 has a search function that displays results in an intuitive, responsive, mobile friendly, easy to navigate interface.
