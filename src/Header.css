@@ -10,8 +10,9 @@
 
 .scroll{
     font-family: 'Courier New', Courier, monospace;
-    color:purple;
+    color:white;
     padding-bottom: 10px;
+    font-weight: bold;
 }
 
 .stuff {
