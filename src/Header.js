@@ -15,7 +15,7 @@ export default class Header extends Component {
             
             <div className="scroll">
               <ReactTypingEffect
-                text="What's your question?" 
+                text="A Jeopardy Search Engine " 
               /> 
             </div>
           </div>
